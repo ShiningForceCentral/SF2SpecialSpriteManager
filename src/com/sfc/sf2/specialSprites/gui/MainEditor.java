@@ -181,7 +181,7 @@ public class MainEditor extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("3x3 (x3) - (nazcaship)");
+        jRadioButton2.setText("6x3 (x3) - (nazcaship)");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
@@ -255,14 +255,14 @@ public class MainEditor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)
                         .addComponent(jLabel4)
-                        .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jRadioButton3))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -778,7 +778,7 @@ public class MainEditor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        SpecialSpriteManager.exportPng(jTextField15.getText(), jSpinner1.getValue().toString());
+        SpecialSpriteManager.exportPng(jTextField15.getText(), (int)jSpinner1.getValue());
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -804,7 +804,7 @@ public class MainEditor extends javax.swing.JFrame {
             blockRowCount = 2;
             tilesPerBlock = 3;
         } else if (jRadioButton2.isSelected()) {
-            blockColumnCount = 3;
+            blockColumnCount = 6;
             blockRowCount = 3;
             tilesPerBlock = 3;
         } else {
@@ -851,7 +851,7 @@ public class MainEditor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        SpecialSpriteManager.exportGif(jTextField17.getText(), jSpinner1.getValue().toString());
+        SpecialSpriteManager.exportGif(jTextField17.getText(), (int)jSpinner1.getValue());
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed

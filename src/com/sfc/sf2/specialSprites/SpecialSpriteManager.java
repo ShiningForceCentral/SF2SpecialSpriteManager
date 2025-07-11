@@ -41,7 +41,7 @@ public class SpecialSpriteManager {
         System.out.println("com.sfc.sf2.spellGraphic.SpecialSpriteManager.importDisassembly() - Disassembly imported.");
     }
     
-    public void exportPng(String filepath, String tilesPerRow) {
+    public void exportPng(String filepath, int tilesPerRow) {
         System.out.println("com.sfc.sf2.spellGraphic.SpecialSpriteManager.exportDisassembly() - Exporting disassembly ...");
         graphicsManager.setTiles(tiles);
         graphicsManager.exportPng(filepath, tilesPerRow);
@@ -56,7 +56,7 @@ public class SpecialSpriteManager {
         System.out.println("com.sfc.sf2.spellGraphic.SpecialSpriteManager.importDisassembly() - Disassembly imported.");
     }
     
-    public void exportGif(String filepath, String tilesPerRow) {
+    public void exportGif(String filepath, int tilesPerRow) {
         System.out.println("com.sfc.sf2.spellGraphic.SpecialSpriteManager.exportDisassembly() - Exporting disassembly ...");
         graphicsManager.setTiles(tiles);
         graphicsManager.exportGif(filepath, tilesPerRow);

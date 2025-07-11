@@ -50,14 +50,13 @@ public class SpecialSpriteLayout extends JPanel {
             imageHeight+=8;
         }
         if (redraw) {
-            IndexColorModel icm = buildIndexColorModel(tiles[0].getPalette());
-            currentImage = new BufferedImage(tilesPerRow*8, imageHeight , BufferedImage.TYPE_BYTE_INDEXED, icm);
+            currentImage = new BufferedImage(tilesPerRow*8, imageHeight , BufferedImage.TYPE_INT_ARGB);
             Graphics graphics = currentImage.getGraphics();
             int i=0;
             int j=0;
             while (i*tilesPerRow+j < tiles.length) {
                 while (j<tilesPerRow && i*tilesPerRow+j < tiles.length) {
-                    graphics.drawImage(tiles[i*tilesPerRow+j].getImage(), j*8, i*8, null);
+                    graphics.drawImage(tiles[i*tilesPerRow+j].getIndexedColorImage(), j*8, i*8, null);
                     j++;
                 }
                 j=0;
@@ -67,21 +66,6 @@ public class SpecialSpriteLayout extends JPanel {
         }
         currentImage = resize(currentImage);
         return currentImage;
-    }
-    
-    private static IndexColorModel buildIndexColorModel(Color[] colors) {
-        byte[] reds = new byte[16];
-        byte[] greens = new byte[16];
-        byte[] blues = new byte[16];
-        byte[] alphas = new byte[16];
-        for (int i = 0; i < 16; i++) {
-            reds[i] = (byte)colors[i].getRed();
-            greens[i] = (byte)colors[i].getGreen();
-            blues[i] = (byte)colors[i].getBlue();
-            alphas[i] = (byte)0xFF;
-        }
-        IndexColorModel icm = new IndexColorModel(4,16,reds,greens,blues,alphas);       
-        return icm;
     }
     
     private void drawGrid(BufferedImage image) {
@@ -111,7 +95,7 @@ public class SpecialSpriteLayout extends JPanel {
     private BufferedImage resize(BufferedImage image) {
         if (displaySize == 1)
             return image;
-        BufferedImage newImage = new BufferedImage(image.getWidth()*displaySize, image.getHeight()*displaySize, BufferedImage.TYPE_BYTE_INDEXED, (IndexColorModel)image.getColorModel());
+        BufferedImage newImage = new BufferedImage(image.getWidth()*displaySize, image.getHeight()*displaySize, BufferedImage.TYPE_INT_ARGB);
         Graphics g = newImage.getGraphics();
         g.drawImage(image, 0, 0, image.getWidth()*displaySize, image.getHeight()*displaySize, null);
         g.dispose();
