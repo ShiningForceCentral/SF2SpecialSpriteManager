@@ -5,7 +5,6 @@
  */
 package com.sfc.sf2.specialSprites.gui;
 
-import com.sfc.sf2.graphics.Tile;
 import com.sfc.sf2.specialSprites.SpecialSpriteManager;
 import com.sfc.sf2.specialSprites.layout.SpecialSpriteLayout;
 import java.awt.GridLayout;
@@ -25,7 +24,7 @@ import javax.swing.JTextArea;
 public class MainEditor extends javax.swing.JFrame {
     
     SpecialSpriteManager specialSpriteManager = new SpecialSpriteManager();
-        SpecialSpriteLayout specialSpriteLayout = new SpecialSpriteLayout();
+    SpecialSpriteLayout specialSpriteLayout = new SpecialSpriteLayout();
     
     /**
      * Creates new form NewApplication
@@ -117,6 +116,7 @@ public class MainEditor extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jTextField13 = new javax.swing.JTextField();
         jButton20 = new javax.swing.JButton();
+        jCheckBox2 = new javax.swing.JCheckBox();
         jPanel14 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jTextField15 = new javax.swing.JTextField();
@@ -470,6 +470,7 @@ public class MainEditor extends javax.swing.JFrame {
         });
 
         jLabel1.setText("<html>Select new target files. This export will create a new BIN file.</html>");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         jLabel14.setText("Graphics file :");
 
@@ -482,6 +483,9 @@ public class MainEditor extends javax.swing.JFrame {
                 jButton20ActionPerformed(evt);
             }
         });
+
+        jCheckBox2.setSelected(true);
+        jCheckBox2.setText("Save palette in file");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -497,9 +501,10 @@ public class MainEditor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton20))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(jCheckBox2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -510,10 +515,12 @@ public class MainEditor extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(jButton20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(jCheckBox2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         jTabbedPane2.addTab("Disassembly", jPanel11);
@@ -554,7 +561,7 @@ public class MainEditor extends javax.swing.JFrame {
                         .addComponent(jButton27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jLabel9)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton13)))
                 .addContainerGap())
@@ -611,7 +618,7 @@ public class MainEditor extends javax.swing.JFrame {
                         .addComponent(jButton29))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jLabel13)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton21)))
                 .addContainerGap())
@@ -733,7 +740,7 @@ public class MainEditor extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -798,7 +805,7 @@ public class MainEditor extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
         );
 
         jSplitPane1.setBottomComponent(jPanel7);
@@ -811,7 +818,7 @@ public class MainEditor extends javax.swing.JFrame {
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -825,15 +832,15 @@ public class MainEditor extends javax.swing.JFrame {
             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(962, 685));
+        setSize(new java.awt.Dimension(962, 703));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int tilesPerBlock = 3;
-        int blockRowCount = (int)jSpinner1.getValue() / 3;
-        int blockColumnCount = specialSpriteManager.getTiles().length / tilesPerBlock / blockRowCount;
-        specialSpriteManager.exportDisassembly(jTextField13.getText(), blockColumnCount, blockRowCount, tilesPerBlock);
+        int blockRows = (int)jSpinner3.getValue();
+        int blockColumns = (int)jSpinner2.getValue();
+        int tilesPerBlock = (int)jSpinner5.getValue();
+        specialSpriteManager.exportDisassembly(jTextField13.getText(), blockRows, blockColumns, tilesPerBlock, jCheckBox2.isSelected());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
@@ -1029,6 +1036,7 @@ public class MainEditor extends javax.swing.JFrame {
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton29;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JFileChooser jFileChooser2;

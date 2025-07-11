@@ -27,9 +27,9 @@ public class SpecialSpriteManager {
         System.out.println("com.sfc.sf2.spellGraphic.SpecialSpriteManager.importDisassembly() - Disassembly imported.");
     }
     
-    public void exportDisassembly(String graphicsFilePath, int blockColumns, int blockRows, int tilesPerBlock) {
+    public void exportDisassembly(String graphicsFilePath, int blockRows, int blockColumns, int tilesPerBlock, boolean savePaletteInFile) {
         System.out.println("com.sfc.sf2.spellGraphic.SpecialSpriteManager.exportDisassembly() - Exporting disassembly ...");
-        DisassemblyManager.exportDisassembly(graphicsFilePath, palette, tiles, blockColumns, blockRows, tilesPerBlock);
+        DisassemblyManager.exportDisassembly(graphicsFilePath, savePaletteInFile ? palette : null, tiles, blockRows, blockColumns, tilesPerBlock);
         System.out.println("com.sfc.sf2.spellGraphic.SpecialSpriteManager.exportDisassembly() - Disassembly exporting.");
     }
     

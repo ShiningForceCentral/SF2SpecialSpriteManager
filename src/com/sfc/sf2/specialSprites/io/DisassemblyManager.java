@@ -66,18 +66,24 @@ public class DisassemblyManager {
         return palette;
     }
     
-    public static void exportDisassembly(String filepath, Color[] palette, Tile[] tiles, int blockColumns, int blockRows, int tilesPerBlock) {
+    public static void exportDisassembly(String filepath, Color[] palette, Tile[] tiles, int blockRows, int blockColumns, int tilesPerBlock) {
         System.out.println("com.sfc.sf2.specialSprites.io.disassemblyManager.exportDisassembly() - Exporting disassembly ...");
         try {
-            PaletteEncoder.producePalette(palette);
-            byte[] paletteBytes = PaletteEncoder.getNewPaletteFileBytes();
+            byte[] paletteBytes = new byte[0];
+            int paletteOffset = palette == null ? 0 : 32;
+            if (palette != null) {
+                PaletteEncoder.producePalette(palette);
+                paletteBytes = PaletteEncoder.getNewPaletteFileBytes();
+            }
             tiles = reorderTilesForDisasssembly(tiles, blockColumns, blockRows, tilesPerBlock);
             StackGraphicsEncoder.produceGraphics(tiles);
             byte[] tilesBytes = StackGraphicsEncoder.getNewGraphicsFileBytes();
 
             byte[] newSpellGraphicFileBytes = new byte[paletteBytes.length + tilesBytes.length];
-            System.arraycopy(paletteBytes, 0, newSpellGraphicFileBytes, 0, paletteBytes.length);
-            System.arraycopy(tilesBytes, 0, newSpellGraphicFileBytes, 32, tilesBytes.length);
+            if (palette != null) {
+                System.arraycopy(paletteBytes, 0, newSpellGraphicFileBytes, 0, paletteBytes.length);
+            }
+            System.arraycopy(tilesBytes, 0, newSpellGraphicFileBytes, paletteOffset, tilesBytes.length);
 
             Path graphicsFilePath = Paths.get(filepath);
             Files.write(graphicsFilePath,newSpellGraphicFileBytes);
