@@ -12,6 +12,7 @@ import com.sfc.sf2.graphics.compressed.StackGraphicsEncoder;
 import com.sfc.sf2.palette.graphics.PaletteDecoder;
 import com.sfc.sf2.palette.graphics.PaletteEncoder;
 import java.awt.Color;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -24,19 +25,32 @@ import java.util.logging.Logger;
  */
 public class DisassemblyManager {
     
-    public static Color[] importDisassembly(String filepath, GraphicsManager graphicsManager, int blockColumns, int blockRows, int tilesPerBlock) {
+    public static Color[] importDisassembly(String filepath, GraphicsManager graphicsManager, int blockRows, int blockColumns, int tilesPerBlock, String paletteFilepath) {
         System.out.println("com.sfc.sf2.specialSprites.io.disassemblyManager.importDisassembly() - Importing disassembly file ...");
         Color[] palette = null;
         try {
+            boolean separatePalette = paletteFilepath != null && paletteFilepath.length() > 0;
             Path path = Paths.get(filepath);
-            if (path.toFile().exists()) {
-                byte[] data = Files.readAllBytes(path);
-                if (data.length > 40) {
+            Path palettePath = separatePalette ? Paths.get(paletteFilepath) : path;
+            if (separatePalette && !palettePath.isAbsolute()) {
+                palettePath = Paths.get(filepath.substring(0, filepath.lastIndexOf("\\")+1), paletteFilepath);
+            }
+            if (palettePath.toFile().exists()) {
+                byte[] data = Files.readAllBytes(palettePath);
+                if (data.length >= 32) {
                     byte[] colorData = new byte[32];
                     System.arraycopy(data, 0, colorData, 0, 32);
                     palette = PaletteDecoder.parsePalette(colorData);
-                    byte[] tileData = new byte[data.length - 32];
-                    System.arraycopy(data, 32, tileData, 0, tileData.length);
+                } else {
+                    System.out.println("com.sfc.sf2.specialSprites.io.disassemblyManager.parseGraphics() - Palette file ignored because of too small length (must be a dummy file) " + data.length + " : " + filepath);
+                }
+            }
+            if (path.toFile().exists()) {
+                byte[] data = Files.readAllBytes(path);
+                if (data.length > 40) {
+                    int paletteOffset = separatePalette ? 0 : 32;
+                    byte[] tileData = new byte[data.length - paletteOffset];
+                    System.arraycopy(data, paletteOffset, tileData, 0, tileData.length);
                     Tile[] tiles = new StackGraphicsDecoder().decodeStackGraphics(tileData, palette);
                     tiles = reorderTilesSequentially(tiles, blockColumns, blockRows, tilesPerBlock);
                     graphicsManager.setTiles(tiles);

@@ -20,9 +20,9 @@ public class SpecialSpriteManager {
     private Tile[] tiles;
     private Color[] palette;
        
-    public void importDisassembly(String graphicsFilePath, int blockColumns, int blockRows, int tilesPerBlock) {
+    public void importDisassembly(String graphicsFilePath, int blockRows, int blockColumns, int tilesPerBlock, String paletteFilepath) {
         System.out.println("com.sfc.sf2.spellGraphic.SpecialSpriteManager.importDisassembly() - Importing disassembly ...");
-        palette = DisassemblyManager.importDisassembly(graphicsFilePath, graphicsManager, blockColumns, blockRows, tilesPerBlock);
+        palette = DisassemblyManager.importDisassembly(graphicsFilePath, graphicsManager, blockRows, blockColumns, tilesPerBlock, paletteFilepath);
         tiles = graphicsManager.getTiles();
         System.out.println("com.sfc.sf2.spellGraphic.SpecialSpriteManager.importDisassembly() - Disassembly imported.");
     }

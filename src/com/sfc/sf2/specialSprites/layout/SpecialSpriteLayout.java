@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.awt.image.IndexColorModel;
 import javax.swing.JPanel;
 
 /**
@@ -26,7 +25,7 @@ public class SpecialSpriteLayout extends JPanel {
     private boolean redraw = true;
     
     private int tilesPerRow = 8;
-    private int displaySize = 1;
+    private int displaySize = 2;
     private boolean showGrid = false;
     
     @Override
